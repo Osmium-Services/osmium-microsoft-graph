@@ -1,9 +1,9 @@
 {
     "id": "microsoft-graph",
     "name": "Microsoft 365 Mail",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Send site email through the Microsoft Graph API using an Azure AD app registration - for Microsoft 365 tenants that have disabled SMTP AUTH. Appears as a provider on the Email settings page.",
-    "category": "other",
+    "category": "email",
     "author": {
         "name": "Gavin Cox"
     },
