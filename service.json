@@ -1,0 +1,55 @@
+{
+    "id": "microsoft-graph",
+    "name": "Microsoft 365 Mail",
+    "version": "1.0.0",
+    "description": "Send site email through the Microsoft Graph API using an Azure AD app registration - for Microsoft 365 tenants that have disabled SMTP AUTH. Appears as a provider on the Email settings page.",
+    "category": "other",
+    "author": {
+        "name": "Gavin Cox"
+    },
+    "license": "proprietary",
+
+    "requires": {
+        "osmium": ">=1.0.0",
+        "php": ">=8.1",
+        "services": []
+    },
+
+    "autoload": [
+        "models"
+    ],
+
+    "admin": {
+        "menu": {
+            "section": "Content",
+            "items": [
+                {
+                    "id": "microsoft-graph",
+                    "label": "Microsoft 365 Mail",
+                    "icon": "bx bx-envelope",
+                    "route": "admin/settings/microsoft-graph",
+                    "activePattern": "admin/settings/microsoft-graph",
+                    "role": null
+                }
+            ]
+        },
+        "routes": {
+            "admin/settings/microsoft-graph": {
+                "controller": "controllers/MicrosoftGraphController.php",
+                "class": "Osmium\\Services\\MicrosoftGraph\\Controllers\\MicrosoftGraphController",
+                "method": "index",
+                "title": "Microsoft 365 Mail"
+            }
+        }
+    },
+
+    "hooks": {
+        "mail.providers": [
+            "Osmium\\Services\\MicrosoftGraph\\Models\\MicrosoftGraphMailProvider::provider"
+        ]
+    },
+
+    "setup": {
+        "postInstallNote": "Enter the Tenant ID, Client ID and client secret of an Azure AD app registration with the Mail.Send application permission (admin consent granted) on the Microsoft 365 Mail settings page. Mail is sent as the From address on Settings > Email, so scope the app to that mailbox with an Exchange ApplicationAccessPolicy. Then choose Microsoft 365 Mail as the Provider on Settings > Email and use Send test email."
+    }
+}
