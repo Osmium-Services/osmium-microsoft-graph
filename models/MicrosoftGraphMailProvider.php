@@ -23,6 +23,9 @@ class MicrosoftGraphMailProvider
             'ready' => MicrosoftGraphConfig::isReady(),
             'settingsRoute' => 'settings/microsoft-graph/',
             'mailer' => MicrosoftGraphMailer::class,
+            'diagnostics' => MicrosoftGraphDiagnostics::class,
+            'spfIncludes' => ['spf.protection.outlook.com'],
+            'dkimSelectors' => ['selector1', 'selector2'],
         ];
     }
 }

@@ -47,7 +47,10 @@ class MicrosoftGraphMailer implements MailerInterface
         }
     }
 
-    private function getAccessToken(): string
+    /**
+     * @throws \RuntimeException when the token request fails
+     */
+    public function getAccessToken(): string
     {
         $graph = MicrosoftGraphConfig::get();
         $tokenUrl = \sprintf(self::TOKEN_URL_TEMPLATE, $graph->tenantId);
@@ -141,7 +144,7 @@ class MicrosoftGraphMailer implements MailerInterface
      * Turns the commonest Azure AD failures into a plain-English next step,
      * so the admin doesn't have to go AADSTS-code-spelunking.
      */
-    private function hintForError(string $error): string
+    public function hintForError(string $error): string
     {
         $isInvalidClientSecret = \str_contains($error, 'AADSTS7000215') || \str_contains($error, 'AADSTS7000222');
         if ($isInvalidClientSecret) {
