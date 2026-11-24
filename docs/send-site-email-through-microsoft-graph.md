@@ -1,6 +1,7 @@
 ---
 title: Send your site's email through Microsoft 365
 tags: email, microsoft-graph, mail provider, smtp, sending, deliverability
+page: admin/settings/microsoft-graph
 ---
 
 **Microsoft 365** sends your site's email, such as order confirmations and sign-in codes, through Microsoft 365's service instead of SMTP. It is useful where your hosting blocks outbound SMTP.
